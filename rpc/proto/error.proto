@@ -1,0 +1,25 @@
+syntax = "proto3";
+package default_rpc.error;
+
+enum errcode{
+	ERR_UNKNOW = 0;
+	ERR_DISCONNECTED = 1;
+	ERR_BAD_REQUEST = 2;
+};
+message Date{
+	int32 day = 1;
+	int32 month = 2;
+	int32 year = 3;
+}
+message Reply{
+	uint64 request_id = 1;
+	errcode code = 2;
+	string error_message = 3;
+	
+	oneof body{
+		string html = 4;
+		bytes raw = 5;
+		Date date = 6; 
+	}
+
+}

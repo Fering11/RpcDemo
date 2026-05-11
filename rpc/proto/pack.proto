@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package default_rpc;
+
+import "error.proto";
+
+message User {
+  int32 id = 1;
+  string name = 2;
+}
+
+message UserList{
+	repeated User users = 1;
+}
+
+message Request{
+	reserved 30 to 100;
+	reserved "session";
+
+	uint64 id = 1;
+	bytes payload = 2;
+	UserList user_list=3;
+	map<uint64,User> compact = 4;
+	default_rpc.error.Reply client = 5;
+
+}
+
+
