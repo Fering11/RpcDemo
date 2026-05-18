@@ -15,6 +15,19 @@ endif()
 set(CMAKE_CXX_STANDARD 20)
 project ("Demo")
 
+if(MSVC)
+    message(STATUS "Using MSVC")
+
+    # 关闭警告 C4819: 无效的字符。避免中文注释被警告
+    add_compile_options(
+        "/wd4819"
+    )
+
+    # 关闭 /showIncludes
+    string(REPLACE "/showIncludes" "" CMAKE_DEPFILE_FLAGS_C "${CMAKE_DEPFILE_FLAGS_C}")
+    string(REPLACE "/showIncludes" "" CMAKE_DEPFILE_FLAGS_CXX "${CMAKE_DEPFILE_FLAGS_CXX}")
+endif()
+
 # 配置Boost库路径
 set(BOOST_ROOT "D:/Library/boost")
 set(BOOST_INCLUDEDIR "D:/Library/boost/include/boost-1_90")
@@ -32,3 +45,4 @@ message(STATUS "Boost library directory: ${BOOST_LIBRARYDIR}")
 # 包含子项目。
 add_subdirectory ("Demo")
 add_subdirectory ("rpc")
+add_subdirectory ("test")

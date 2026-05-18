@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package rpc_detail_v0_1;
+
+import "method.proto";
+
+enum MethodType{
+	MET_UNKNOW = 0;
+	MET_ADD = 1;
+	MET_DIV = 2;
+	MET_CALC_MATRIX = 3;
+}
+
+message Request{
+	uint64 id = 1;
+	MethodType type =2;
+	bytes body = 3; 
+}
+
+enum NetworkStatus{
+	STATUS_UNKNOW = 0;
+	STATUS_OK = 1;
+}
+
+message Response{
+	uint64 id = 1;
+	NetworkStatus status =2;
+	bytes body = 3;
+}

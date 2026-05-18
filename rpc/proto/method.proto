@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package rpc_detail_v0_1.method;
+
+message add{
+	int32 left = 1;
+	int32 right = 2;
+}
+message div{
+	int32 left = 1;
+	int32 right = 2;
+}

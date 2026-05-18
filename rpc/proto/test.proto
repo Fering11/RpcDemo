@@ -1,0 +1,38 @@
+//该文件用于验证bytes存储序列化之后的数据，只是测试文件，不参与项目生成
+syntax = "proto3";
+package test;
+
+enum RunStatus{
+	STAT_UNKNOW = 0;
+	STAT_ERR_BAD_ALLOC = 1;
+	STAT_ERR_LOW_MEM = 2;
+	STAT_ERR_OK = 3;
+}
+
+message AddArgument{
+	int32 id = 1;
+	RunStatus status = 2;
+	bytes info = 3;
+}
+
+message NumList{
+	repeated int32 num = 1;
+}
+
+message SubArgument{
+	int32 id = 1;
+	RunStatus status = 2;
+	bytes info = 3;
+	NumList num = 4;
+}
+
+enum PackageBodyType{
+	TYPE_UNKNOW = 0;
+	TYPE_SUB = 1;
+	TYPE_ADD = 2;
+}
+
+message Package{
+	PackageBodyType type = 1;
+	bytes body = 2;
+}
