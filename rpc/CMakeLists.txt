@@ -29,7 +29,7 @@ file(GLOB PROTOBUF_SOURCE
     "${CMAKE_CURRENT_SOURCE_DIR}/proto/build/*.h")
     
 add_executable (client ${RPC_LIB_SOURCE} ${PROTOBUF_SOURCE}
-    "client.hpp" "rpc_client.cpp" "method/operation.hpp")
+    "client.hpp" "rpc_client.cpp" "method/operation.hpp" "method/operation.cpp")
 add_executable (server ${RPC_LIB_SOURCE} ${PROTOBUF_SOURCE} 
     "server.hpp" "rpc_server.cpp" "method/operation.hpp" "method/operation.cpp")
 

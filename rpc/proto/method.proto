@@ -5,8 +5,27 @@ package rpc_detail_v0_1.method;
 message add{
 	int32 left = 1;
 	int32 right = 2;
+	message result_type{
+		int32 ret = 1;
+	}
 }
 message div{
 	int32 left = 1;
 	int32 right = 2;
+	message result_type{
+		int32 ret = 1;
+	}
+}
+
+message calc_matrix{
+	message int_list{
+		repeated int32 edge = 1;	
+	}
+	message result_type{
+		repeated int_list ret = 1;
+	}
+
+	repeated int_list left=1;
+	repeated int_list right=2;
+	uint32 times = 3;
 }

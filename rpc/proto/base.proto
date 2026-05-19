@@ -11,19 +11,27 @@ enum MethodType{
 	MET_CALC_MATRIX = 3;
 }
 
+enum StatusCode {
+    STATUS_UNKNOWN = 0;
+    STATUS_OK = 1;
+    STATUS_BAD_REQUEST = 2;
+    STATUS_METHOD_NOT_FOUND = 3;
+    STATUS_PARSE_ERROR = 4;
+    STATUS_INVOKE_ERROR = 5;
+    STATUS_INTERNAL_ERROR = 6;
+}
+
 message Request{
 	uint64 id = 1;
-	MethodType type =2;
+	MethodType type = 2;
 	bytes body = 3; 
 }
 
-enum NetworkStatus{
-	STATUS_UNKNOW = 0;
-	STATUS_OK = 1;
-}
 
 message Response{
 	uint64 id = 1;
-	NetworkStatus status =2;
-	bytes body = 3;
+	StatusCode status = 2;
+	MethodType type = 3;
+	bytes body = 4;
+	string error_message = 5;
 }
